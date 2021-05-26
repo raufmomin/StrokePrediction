@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Stroke Prediction</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+        input[type=text],
+        select {
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #45a049;
+        }
+
+        div {
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h1,
+        h3 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Predict the Stroke Disease</h1>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}" method="post">
+
+            <label for="gender">Please select your gender? </label>
+            <select name="gender" id="gender" required="required">
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+                <option value="0">Other</option>
+            </select>
+
+            <br><br>
+
+            <label for="hypertension">Do you have hypertension? </label>
+            <select name="hypertension" id="hypertension" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <br><br>
+
+            <label for="heart_disease">Do you have heart disease? </label>
+            <select name="heart_disease" id="heart_disease" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <br><br>
+
+            <label for="ever_married">Are you married? </label>
+            <select name="ever_married" id="ever_married" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <br><br>
+
+            <label for="Residence_type">What's your residence type? </label>
+            <select name="Residence_type" id="Residence_type" required="required">
+                <option value="1">Urban</option>
+                <option value="0">Rural</option>
+            </select>
+
+            <br><br>
+
+            <label for="smoking_status">What's your smoking status? </label>
+            <select name="smoking_status" id="smoking_status" required="required">
+                <option value="1">Unknown</option>
+                <option value="2">Formerly Smoked</option>
+                <option value="3">Never Smoked</option>
+                <option value="4">Smokes</option>
+            </select>
+
+            <br><br>
+
+            <label for="work_type">What's your work type? </label>
+            <select name="work_type" id="work_type" required="required">
+                <option value="1">Govt Job</option>
+                <option value="2">Never Worked</option>
+                <option value="3">Private</option>
+                <option value="4">Self-Employed</option>
+                <option value="5">Children</option>
+            </select>
+
+            <br><br>
+
+            <label for="avg_glucose_level">What's your glucose level? </label>
+            <input type="text" name="avg_glucose_level" placeholder="Your average glucose level" required="required" />
+
+            <br><br>
+
+            <label for="bmi">What's your BMI? </label>
+            <input type="text" name="bmi" placeholder="Your BMI" required="required" />
+
+            <br><br>
+
+            <label for="age">What's your age? </label>
+            <input type="text" name="age" placeholder="Your Age" required="required" />
+
+            <br><br>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        <br>
+        <br>
+        <h3>{{ prediction_text }}</h3>
+
+    </div>
+
+
+</body>
+
+</html>
